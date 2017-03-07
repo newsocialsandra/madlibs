@@ -46,7 +46,8 @@ for line in oldtext:
             newtext.append(word)
 
 # Print new text and save to text file
-
+# TODO: Print text as string
+# TODO: Add formatting so new text matches old text
 print (newtext)
 
 newfile = open('newtext.txt', 'w')
