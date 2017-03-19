@@ -1,34 +1,35 @@
+"""A madlibs machine."""
+
 import shelve
 import re
 import random
 
 # Open and save text in variable
-
 textfile = open('text.txt')
 oldtext = textfile.readlines()
 textfile.close()
 
 # Prompt user for adjective, noun, verb and noun
-# Save user input in shelve databse
+# Save user input in shelve database
 shelffile = shelve.open('words', writeback=True)
 
-# TODO: add an if-statement that skips these six lines
-# if the database isn't empty
-adjectives = []
-nouns = []
-verbs = []
-shelffile['adjectives'] = adjectives
-shelffile['nouns'] = nouns
-shelffile['verbs'] = verbs
+if not shelffile:
+    adjectives = []
+    nouns = []
+    verbs = []
+    shelffile['adjectives'] = adjectives
+    shelffile['nouns'] = nouns
+    shelffile['verbs'] = verbs
 
 shelffile['adjectives'].append(input('Type an adjective: '))
 shelffile['nouns'].append(input('Type a noun: '))
 shelffile['verbs'].append(input('Type a verb: '))
 shelffile['nouns'].append(input('Type another noun: '))
 
-print (shelffile["adjectives"])
-print (shelffile["nouns"])
-print (shelffile["verbs"])
+# Comment these three out to see all stored words
+# print (shelffile["adjectives"])
+# print (shelffile["nouns"])
+# print (shelffile["verbs"])
 
 
 # Find and replace placeholders in text with users input
