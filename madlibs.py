@@ -49,7 +49,7 @@ for line in oldtext:
 # Print new text and save to text file
 # TODO: Print text as string
 # TODO: Add formatting so new text matches old text
-print (newtext)
+print (' '.join(newtext))
 
 newfile = open('newtext.txt', 'w')
 newfile.write(' '.join(newtext))
