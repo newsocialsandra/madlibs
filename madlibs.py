@@ -47,12 +47,11 @@ for line in oldtext:
             newtext.append(word)
 
 # Print new text and save to text file
-# TODO: Print text as string
 # TODO: Add formatting so new text matches old text
 print (' '.join(newtext))
 
 newfile = open('newtext.txt', 'w')
 newfile.write(' '.join(newtext))
-newfile.close()
 
+newfile.close()
 shelffile.close()
