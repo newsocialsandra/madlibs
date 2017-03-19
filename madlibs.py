@@ -9,10 +9,10 @@ textfile = open('text.txt')
 oldtext = textfile.readlines()
 textfile.close()
 
-# Prompt user for adjective, noun, verb and noun
-# Save user input in shelve database
+# Open shelve database to store user input
 shelffile = shelve.open('words', writeback=True)
 
+# If shelffile is empty, set it up with these keys
 if not shelffile:
     adjectives = []
     nouns = []
@@ -21,6 +21,7 @@ if not shelffile:
     shelffile['nouns'] = nouns
     shelffile['verbs'] = verbs
 
+# Prompt user for adjective, noun, verb and noun
 shelffile['adjectives'].append(input('Type an adjective: '))
 shelffile['nouns'].append(input('Type a noun: '))
 shelffile['verbs'].append(input('Type a verb: '))
@@ -32,7 +33,7 @@ shelffile['nouns'].append(input('Type another noun: '))
 # print (shelffile["verbs"])
 
 
-# Find and replace placeholders in text with users input
+# Find and replace placeholders in text with randon choices from db
 newtext = []
 for line in oldtext:
     line = re.findall(r"[\w']+", line)
